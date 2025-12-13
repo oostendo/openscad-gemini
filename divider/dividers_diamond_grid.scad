@@ -53,28 +53,26 @@ module GridHoles() {
 
     // Generate Holes
     // We iterate with a buffer (-1 to +1) to catch holes that might fit due to shifting
-    translate([0,0, -1]) {
-        for (j = [0 : numRows - 1]) {
-            for (i = [-1 : numCols]) {
-                // Determine Row properties
-                rowY = offsetY + (holeDiagonal / 2) + (j * stepY);
-                rowShift = (j % 2) * (stepX / 2);
+    for (j = [0 : numRows - 1]) {
+        for (i = [-1 : numCols]) {
+            // Determine Row properties
+            rowY = offsetY + (holeDiagonal / 2) + (j * stepY);
+            rowShift = (j % 2) * (stepX / 2);
+            
+            // Determine Hole Center
+            // We use the same offsetX base, then add the grid position and the row's shift
+            holeX = offsetX + (holeDiagonal / 2) + (i * stepX) + rowShift;
+            
+            // Check if this specific hole fits within the safe bounds
+            // We check the bounding box of the diamond (which is width/height = holeDiagonal)
+            if (holeX - (holeDiagonal/2) >= minX && 
+                holeX + (holeDiagonal/2) <= maxX &&
+                rowY - (holeDiagonal/2) >= minY && 
+                rowY + (holeDiagonal/2) <= maxY) {
                 
-                // Determine Hole Center
-                // We use the same offsetX base, then add the grid position and the row's shift
-                holeX = offsetX + (holeDiagonal / 2) + (i * stepX) + rowShift;
-                
-                // Check if this specific hole fits within the safe bounds
-                // We check the bounding box of the diamond (which is width/height = holeDiagonal)
-                if (holeX - (holeDiagonal/2) >= minX && 
-                    holeX + (holeDiagonal/2) <= maxX &&
-                    rowY - (holeDiagonal/2) >= minY && 
-                    rowY + (holeDiagonal/2) <= maxY) {
-                    
-                    translate([holeX, rowY, 0])
-                        rotate([0, 0, 45])
-                        cube([holeSize, holeSize, drawerDividerWallThickness + 2], center=true);
-                }
+                translate([holeX, rowY, drawerDividerWallThickness / 2])
+                    rotate([0, 0, 45])
+                    cube([holeSize, holeSize, drawerDividerWallThickness + 2], center=true);
             }
         }
     }
