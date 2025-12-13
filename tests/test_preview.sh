@@ -10,7 +10,7 @@ rm -f "$OUTPUT_FILE"
 echo "Running OpenSCAD preview generation test..."
 
 # Run OpenSCAD command (mimicking the project's workflow)
-openscad -o "$OUTPUT_FILE" \
+xvfb-run --auto-servernum --server-num=1 openscad -o "$OUTPUT_FILE" \
   --imgsize=512,512 \
   --camera=0,0,0,60,0,25,500 \
   --projection=o \
