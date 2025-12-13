@@ -11,15 +11,17 @@ gridSpacing = 2; // Spacing between hole corners
 
 hexDef = 50;
 
-difference() {
-    // Main Body
-    CubeWithRoudedEdges(drawerDividerWallWidth, drawerDividerWallHeight, drawerDividerWallThickness, drawerDividerWallCornerRadius);
+rotate([0, 90, 0]) {
+    difference() {
+        // Main Body
+        CubeWithRoudedEdges(drawerDividerWallWidth, drawerDividerWallHeight, drawerDividerWallThickness, drawerDividerWallCornerRadius);
 
-    // Grid of Holes
-    GridHoles();
+        // Grid of Holes
+        GridHoles();
 
-    // Material Reduction Bevels (Thinner webbing with 45-degree slopes)
-    BeveledRecesses();
+        // Material Reduction Bevels (Thinner webbing with 45-degree slopes)
+        BeveledRecesses();
+    }
 }
 
 module BeveledRecesses() {
