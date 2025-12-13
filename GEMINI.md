@@ -18,7 +18,7 @@ You should start with a project directory including at least one SCAD file.
 
 * put directory under local git source control and add all files
 
-* add a README.md file to the directory which includes a description of the desired project output
+* add a `README.md` file to each model directory which includes a description of the desired project output and parameters for that model.
 
 ### 1. Modification (SCAD)
 We modify the OpenSCAD parameters to change divider dimensions or couplers.
