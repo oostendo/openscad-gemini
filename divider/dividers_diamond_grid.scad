@@ -16,6 +16,24 @@ difference() {
 
     // Grid of Holes
     GridHoles();
+
+    // Material Reduction Recesses (Thinner webbing)
+    // Remove 25% from Top and Bottom within the grid area
+    RecessHoles();
+}
+
+module RecessHoles() {
+    recessDepth = drawerDividerWallThickness * 0.25;
+    recessWidth = drawerDividerWallWidth - (2 * minEdgeWidth);
+    recessHeight = drawerDividerWallHeight - (2 * minEdgeWidth);
+    
+    // Top Recess
+    translate([minEdgeWidth, minEdgeWidth, drawerDividerWallThickness - recessDepth])
+        cube([recessWidth, recessHeight, recessDepth + 1]);
+
+    // Bottom Recess
+    translate([minEdgeWidth, minEdgeWidth, -1])
+        cube([recessWidth, recessHeight, recessDepth + 1]);
 }
 
 module GridHoles() {
