@@ -22,7 +22,7 @@ This project contains OpenSCAD files for generating drawer dividers.
 
 ### Diamond Grid Drawer Divider
 *   **File:** `divider/dividers_diamond_grid.scad`
-*   **Description:** A 130mm divider with a grid of diamond-shaped holes (squares rotated 45°). This orientation allows for vertical 3D printing without overhang issues.
+*   **Description:** A 130mm divider with a staggered grid of diamond-shaped holes. This design maximizes hole density (saving material) while maintaining 45° angles for optimal vertical 3D printing without supports.
 *   **Key Parameters:**
     *   `holeSize = 5` (Original square dimension)
     *   `minEdgeWidth = 3` (Minimum solid border)
