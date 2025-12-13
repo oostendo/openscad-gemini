@@ -1,3 +1,4 @@
+
 drawerDividerWallWidth = 130;
 drawerDividerWallHeight = 63;
 drawerDividerWallThickness = 6.8;
@@ -17,23 +18,55 @@ difference() {
     // Grid of Holes
     GridHoles();
 
-    // Material Reduction Recesses (Thinner webbing)
-    // Remove 25% from Top and Bottom within the grid area
-    RecessHoles();
+    // Material Reduction Bevels (Thinner webbing with 45-degree slopes)
+    BeveledRecesses();
 }
 
-module RecessHoles() {
+module BeveledRecesses() {
     recessDepth = drawerDividerWallThickness * 0.25;
-    recessWidth = drawerDividerWallWidth - (2 * minEdgeWidth);
-    recessHeight = drawerDividerWallHeight - (2 * minEdgeWidth);
     
-    // Top Recess
-    translate([minEdgeWidth, minEdgeWidth, drawerDividerWallThickness - recessDepth])
-        cube([recessWidth, recessHeight, recessDepth + 1]);
+    // Outer dimensions (Top of the cut, widest point)
+    outerW = drawerDividerWallWidth - (2 * minEdgeWidth);
+    outerH = drawerDividerWallHeight - (2 * minEdgeWidth);
+    
+    // Inner dimensions (Bottom of the cut, narrowest point)
+    // For 45 degrees, the inset equals the depth
+    innerW = outerW - (2 * recessDepth);
+    innerH = outerH - (2 * recessDepth);
 
-    // Bottom Recess
-    translate([minEdgeWidth, minEdgeWidth, -1])
-        cube([recessWidth, recessHeight, recessDepth + 1]);
+    // Center coordinates for the rectangles
+    centerX = drawerDividerWallWidth / 2;
+    centerY = drawerDividerWallHeight / 2;
+
+    // Check validity
+    if (innerW > 0 && innerH > 0) {
+        
+        // TOP RECESS
+        // Hull between surface rectangle and depth rectangle
+        hull() {
+            // Surface Plate (Large) at Z = Thickness
+            translate([centerX, centerY, drawerDividerWallThickness])
+                cube([outerW, outerH, 0.01], center=true);
+            
+            // Bottom Plate (Small) at Z = Thickness - Depth
+            translate([centerX, centerY, drawerDividerWallThickness - recessDepth])
+                cube([innerW, innerH, 0.01], center=true);
+        }
+
+        // BOTTOM RECESS
+        // Hull between surface rectangle and depth rectangle
+        hull() {
+            // Surface Plate (Large) at Z = 0
+            translate([centerX, centerY, 0])
+                cube([outerW, outerH, 0.01], center=true);
+            
+            // Bottom Plate (Small) at Z = Depth
+            translate([centerX, centerY, recessDepth])
+                cube([innerW, innerH, 0.01], center=true);
+        }
+    } else {
+        echo("Warning: Recess too deep for part width, skipping bevel.");
+    }
 }
 
 module GridHoles() {
