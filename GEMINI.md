@@ -34,7 +34,15 @@ We modify the OpenSCAD parameters to change divider dimensions or couplers.
 ### 2. Rendering (CLI)
 We use OpenSCAD's command line interface to export a visual preview (PNG) rather than just an STL. This is faster for AI verification.
 
-**Command Syntax Example:**
+**Preview Script:**
+Use the `preview.sh` script located in the project root for simplified preview generation.
+
+**Command Syntax Example (using preview.sh):**
+```bash
+./preview.sh -o divider/preview/my_divider_150mm.png -s 1024,768 divider/my_divider.scad
+```
+
+**Manual Command Syntax Example (for reference):**
 ```bash
 openscad -o preview.png \
   --imgsize=1024,768 \
@@ -43,6 +51,7 @@ openscad -o preview.png \
   -D "length=150" \
   -D "text_string=\"SPOONS\"" \
   divider.scad
+```
 
 * Whenever you modify key parameters, use the dimensions as part of the resulting image name along with a timestamp, and cache these in a "preview" directory.
 
