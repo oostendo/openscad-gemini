@@ -2,7 +2,7 @@
 
 
 ## Project Overview
-This project automates the creation and verification of custom 3D printed .dividersrts We utilize SCAD files to programmatically generate STLs/PNGs and use Google Gemini to visually inspect the output against natural language requirements.
+This project automates the creation and verification of custom 3D printed .dividersrts We utilize SCAD files to programmatically generate STLs/PNGs
 
 The process may include multiple incremental modifications, and it's important that each modification is identified as being correct.
 
@@ -57,11 +57,16 @@ openscad -o preview.png \
 
 * If you have a syntax error or other error coming out of the openscad executable, try to diagnose and debug.
 
-### 3. Object Evaluation
-
-* Analyze the rendered preview image to see if the image matches the intent described by the design.  If not, return to the modification step of the process and render another preview image to correct it.
-
 * Do not remove old preview images, and if a particular modification takes multiple attempts add "try_#" to the filename eg 'egg_holder_duck.jpg' 'egg_holder_duck_try_2.jpg' 'egg_holder_duck_try_3.jpg'
+
+### 3. Export (STL)
+To generate a 3D printable STL file, use the `generatestl.sh` script.
+
+**Command Syntax Example:**
+```bash
+./generatestl.sh divider/my_divider.scad
+```
+This will create `stl/my_divider.stl`.
 
 ### 4. Presentation to user
 
