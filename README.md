@@ -1,4 +1,4 @@
-# OpenSCAD Generator & Vision Verifier
+# OpenSCAD Generator
 
 This project is driven by `gemini-cli` for prompt-based parametric modeling with OpenSCAD. It automates the creation and of custom 3D printed designs.
 
