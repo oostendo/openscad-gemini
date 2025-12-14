@@ -1,13 +1,12 @@
-# OpenSCAD Dividers Project
+# OpenSCAD Generator & Vision Verifier
 
-This project contains OpenSCAD files for generating drawer dividers.
+This project is driven by `gemini-cli` for prompt-based parametric modeling with OpenSCAD. It automates the creation and verification of custom 3D printed designs.
 
-## Dividers
+## Setup
 
-### 130mm Drawer Divider
-*   **File:** `divider/dividers_130mm.scad`
-*   **Description:** A drawer divider modified to have a length of 130mm.
-*   **Key Parameters:**
-    *   `drawerDividerWallWidth = 130` (Length)
-    *   `drawerDividerWallHeight = 63`
-    *   `drawerDividerWallThickness = 6.8`
+*   **Gemini CLI:** Follow the [setup guide](https://geminicli.com/docs/getting-started/installation).
+*   **OpenSCAD (Ubuntu):** Install via Snap (recommended) or PPA. For example:
+    ```bash
+    sudo snap install openscad
+    ```
+    More installation options can be found on the [OpenSCAD website](https://openscad.org/downloads.html) or [Ubuntu guides](https://snapcraft.io/openscad).
