@@ -20,6 +20,8 @@ You should start with a project directory including at least one SCAD file.
 
 * add a `README.md` file to each model directory which includes a description of the desired project output and parameters for that model.
 
+* **Verification:** Run `./tests/test_preview.sh` to confirm that OpenSCAD and the headless rendering environment (xvfb) are correctly configured.
+
 ### 1. Modification (SCAD)
 We modify the OpenSCAD parameters to change divider dimensions or couplers.
 
@@ -29,13 +31,18 @@ We modify the OpenSCAD parameters to change divider dimensions or couplers.
 
 * Make requested modifications to the SCAD logic itself if required.  Ideally wrap modifications into a module class that uses existing modules rather than modifing modules which existed prior to this project.
 
+* **Print Optimization:** Consider 3D printing constraints.
+    *   Use 45° angles (chamfers/bevels) to avoid overhangs if printing vertically.
+    *   Rotate models (e.g., `rotate([0, 90, 0])`) within the SCAD file to orient them correctly for the print bed (plating).
+    *   Subtract material (grids/honeycombs) to save plastic, using `hull()` for clean beveled cuts.
+
 * Whenever you want to modify a scad file which has been previously unmodified, copy the file and rename it with an indication of intent: eg "egg_holder.scad" would change to "egg_holder_scaled_ostrich.scad" if we wanted to scale a chicken egg holder into an ostrich egg holder.
 
 ### 2. Rendering (CLI)
 We use OpenSCAD's command line interface to export a visual preview (PNG) rather than just an STL. This is faster for AI verification.
 
 **Preview Script:**
-Use the `preview.sh` script located in the project root for simplified preview generation.
+Use the `preview.sh` script located in the project root for simplified preview generation. It automatically handles headless rendering (via `xvfb-run`) if required.
 
 **Command Syntax Example (using preview.sh):**
 ```bash
