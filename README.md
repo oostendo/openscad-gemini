@@ -1,6 +1,6 @@
 # OpenSCAD Generator & Vision Verifier
 
-This project is driven by `gemini-cli` for prompt-based parametric modeling with OpenSCAD. It automates the creation and verification of custom 3D printed designs.
+This project is driven by `gemini-cli` for prompt-based parametric modeling with OpenSCAD. It automates the creation and of custom 3D printed designs.
 
 ## Setup
 
@@ -9,4 +9,4 @@ This project is driven by `gemini-cli` for prompt-based parametric modeling with
     ```bash
     sudo snap install openscad
     ```
-    More installation options can be found on the [OpenSCAD website](https://openscad.org/downloads.html) or [Ubuntu guides](https://snapcraft.io/openscad).
+    More installation options can be found on the [OpenSCAD website](https://openscad.org/downloads.html)
