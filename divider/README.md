@@ -25,6 +25,7 @@ This project contains OpenSCAD files for generating drawer dividers.
     *   `divider/dividers_diamond_grid.scad` (130mm)
     *   `divider/dividers_diamond_grid_129mm.scad` (129mm)
     *   `divider/dividers_diamond_grid_126mm.scad` (126mm)
+    *   `divider/dividers_diamond_grid_117mm.scad` (117mm)
     *   `divider/dividers_diamond_grid_112mm.scad` (112mm)
 *   **Description:** Dividers with a staggered grid of diamond-shaped holes. This design maximizes hole density (saving material) and includes beveled internal recesses (50% webbing thickness with 45° slopes) to further reduce plastic usage and prevent overhangs for vertical 3D printing. The models are rendered with a 90-degree rotation around the length (Y-axis) for convenient print bed plating.
 *   **Key Parameters:**
